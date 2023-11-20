@@ -12,9 +12,11 @@ namespace API.Controllers
 		};
 
 		private readonly ILogger<WeatherForecastController> _logger;
-
+		
 		public WeatherForecastController(ILogger<WeatherForecastController> logger)
 		{
+			// this is a test
+			// These is a bit conffusing
 			_logger = logger;
 		}
 
