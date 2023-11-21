@@ -1,4 +1,6 @@
 ﻿
+using API.Converters;
+using API.Models;
 using BeaversDB;
 using BeaversDB.Model;
 using Microsoft.AspNetCore.Mvc;
@@ -14,6 +16,6 @@ public class BeaversController(AnimalContext context) : ControllerBase
     [HttpGet]
     public ActionResult<IEnumerable<BeaverModel>> GetBeavers()
     {
-        return context.Beavers.Include(beaver => beaver.Id).ToList();
+           return  context.Beavers.Select(b => b.ToModel()).ToList();
     }
 }
