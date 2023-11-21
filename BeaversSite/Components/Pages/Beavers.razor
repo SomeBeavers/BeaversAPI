@@ -1,0 +1,40 @@
+﻿@page "/beavers"
+@rendermode InteractiveServer
+@using API.Models
+@inject HttpClient Http
+<h3>Beavers</h3>
+@if (beavers == null)
+{
+	<p><em>Loading...</em></p>
+}
+else
+{
+	<table class="table">
+		<thead>
+		<tr>
+			<th>Id</th>
+			<th>Name</th>
+			<th>Fluffiness</th>
+			<th>Size</th>
+		</tr>
+		</thead>
+		<tbody>
+		@foreach (var beaver in beavers)
+		{
+			<tr>
+				<td>@beaver.Id</td>
+				<td>@beaver.Name</td>
+				<td>@beaver.Fluffiness</td>
+				<td>@beaver.Size</td>
+			</tr>
+		}
+		</tbody>
+	</table>
+}
+@code {
+	private BeaverModel[] beavers;
+	protected override async Task OnInitializedAsync()
+	{
+		beavers = await Http.GetFromJsonAsync<BeaverModel[]>("api/Beavers");
+	}
+}

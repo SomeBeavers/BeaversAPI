@@ -11,10 +11,9 @@ public static class BeaverExtensions
 		{
 			Id = beaver.Id,
 			Name = beaver.Name,
-			Fluffiness = beaver.Fluffiness,
+			Fluffiness = beaver.Fluffiness.ToString(),
 			Size = beaver.Size,
-			Age = beaver.Age,
-			
+			Age = beaver.Age
 		};
 	}
 
@@ -24,8 +23,9 @@ public static class BeaverExtensions
 		{
 			Id = beaver.Id,
 			Name = beaver.Name,
-			Fluffiness = beaver.Fluffiness,
-			Size = beaver.Size
+			Fluffiness = Enum.Parse<FluffinessEnum>(beaver.Fluffiness),
+			Size = beaver.Size,
+			Age = beaver.Age
 		};
 	}
 }
