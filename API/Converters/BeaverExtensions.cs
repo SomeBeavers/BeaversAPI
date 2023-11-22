@@ -1,5 +1,6 @@
 ﻿using API.Models;
 using BeaversDB.Model;
+using System.Net;
 
 namespace API.Converters;
 
@@ -21,11 +22,11 @@ public static class BeaverExtensions
 	{
 		return new Beaver
 		{
-			Id = beaver.Id,
 			Name = beaver.Name,
 			Fluffiness = Enum.Parse<FluffinessEnum>(beaver.Fluffiness),
 			Size = beaver.Size,
-			Age = beaver.Age
-		};
+			Age = beaver.Age,
+            IpAddress = IPAddress.Parse("127.0.0.1")
+        };
 	}
 }

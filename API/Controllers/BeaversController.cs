@@ -18,6 +18,15 @@ public class BeaversController(AnimalContext context) : ControllerBase
         return context.Beavers.Select(b => b.ToModel()).ToList();
     }
 
+    // GET: api/Beavers/5
+    [HttpGet("{id}")]
+    public async Task<ActionResult<BeaverModel>> GetBeaver(int id)
+    {
+        var beaver = await context.Beavers.FindAsync(id);
+        if (beaver == null) return NotFound();
+        return beaver.ToModel();
+    }
+
     // PUT: api/Beavers/5
     [HttpPut("{id}")]
     public async Task<IActionResult> PutBeaver(int id, BeaverModel beaverModel)
@@ -50,8 +59,10 @@ public class BeaversController(AnimalContext context) : ControllerBase
         var beaver = beaverModel.ToEntity();
         context.Beavers.Add(beaver);
         await context.SaveChangesAsync();
-        return CreatedAtAction("GetBeaver2", new {id = beaver.Id}, beaver.ToModel());
+        return CreatedAtAction("GetBeaver", new { id = beaver.Id }, beaver.ToModel());
     }
+
+
 
     private bool BeaverExists(int id)
     {

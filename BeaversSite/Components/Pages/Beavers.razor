@@ -3,6 +3,7 @@
 @using API.Models
 @inject HttpClient Http
 <h3>Beavers</h3>
+<button @onclick="StartAddingBeaver">Add Beaver</button>
 @if (beavers == null)
 {
     <p><em>Loading...</em></p>
@@ -45,12 +46,23 @@ else
                     </tr>
                 }
             }
+            @if (addingBeaver != null)
+            {
+	            <tr>
+		            <td></td>
+		            <td><input @bind="addingBeaver.Name" /></td>
+		            <td><input @bind="addingBeaver.Fluffiness" /></td>
+		            <td><input @bind="addingBeaver.Size" /></td>
+		            <td><button @onclick="AddBeaver">Save</button></td>
+	            </tr>
+            }
         </tbody>
     </table>
 }
 @code {
     private BeaverModel[] beavers;
     private BeaverModel editingBeaver;
+    private BeaverModel addingBeaver;
     protected override async Task OnInitializedAsync()
     {
         beavers = await Http.GetFromJsonAsync<BeaverModel[]>("api/Beavers");
@@ -59,6 +71,27 @@ else
     {
         editingBeaver = beaver;
     }
+    
+    void StartAddingBeaver()
+    {
+	    addingBeaver = new BeaverModel();
+    }
+    async Task AddBeaver()
+    {
+	    var response = await Http.PostAsJsonAsync("api/Beavers", addingBeaver);
+	    if (response.IsSuccessStatusCode)
+	    {
+		    // Refresh the list of beavers
+		    beavers = await Http.GetFromJsonAsync<BeaverModel[]>("api/Beavers");
+		    addingBeaver = null;
+	    }
+	    else
+	    {
+            
+            
+	    }
+    }
+    
     async Task SaveBeaver()
     {
         await Http.PutAsJsonAsync($"api/Beavers/{editingBeaver.Id}", editingBeaver);
