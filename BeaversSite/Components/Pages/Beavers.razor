@@ -4,6 +4,7 @@
 @inject HttpClient Http
 <h3>Beavers</h3>
 <button @onclick="StartAddingBeaver">Add Beaver</button>
+<button @onclick="Remove"></button>
 @if (beavers == null)
 {
     <p><em>Loading...</em></p>
@@ -71,30 +72,35 @@ else
     {
         editingBeaver = beaver;
     }
-    
+
     void StartAddingBeaver()
     {
-	    addingBeaver = new BeaverModel();
+        addingBeaver = new BeaverModel();
     }
     async Task AddBeaver()
     {
-	    var response = await Http.PostAsJsonAsync("api/Beavers", addingBeaver);
-	    if (response.IsSuccessStatusCode)
-	    {
-		    // Refresh the list of beavers
-		    beavers = await Http.GetFromJsonAsync<BeaverModel[]>("api/Beavers");
-		    addingBeaver = null;
-	    }
-	    else
-	    {
-            
-            
-	    }
+        var response = await Http.PostAsJsonAsync("api/Beavers", addingBeaver);
+        if (response.IsSuccessStatusCode)
+        {
+            // Refresh the list of beavers
+            beavers = await Http.GetFromJsonAsync<BeaverModel[]>("api/Beavers");
+            addingBeaver = null;
+        }
+        else
+        {
+
+
+        }
     }
-    
+
     async Task SaveBeaver()
     {
         await Http.PutAsJsonAsync($"api/Beavers/{editingBeaver.Id}", editingBeaver);
         editingBeaver = null;
     }
+
+    private void Remove()
+    {
+    }
+
 }
