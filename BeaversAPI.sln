@@ -7,7 +7,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API", "API\API.csproj", "{4
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BeaversDB", "BeaversDB\BeaversDB.csproj", "{41C226AE-4563-403D-9FE9-80839FE3FA08}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeaversSite", "BeaversSite\BeaversSite.csproj", "{4683C5CE-6ECD-45EC-9D14-2BEE2446FBBE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BeaversSite", "BeaversSite\BeaversSite.csproj", "{4683C5CE-6ECD-45EC-9D14-2BEE2446FBBE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenAILib", "OpenAILib\OpenAILib.csproj", "{842961BA-7485-458C-A1FE-D7357D244624}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp", "ConsoleApp\ConsoleApp.csproj", "{7D9F11DA-FCC6-494F-BE81-509F9CF3EAB2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelegramBot", "TelegramBot\TelegramBot.csproj", "{EF8FB62B-2BC4-450C-8B56-81F60BF147E6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelegramBotApp", "TelegramBotApp\TelegramBotApp.csproj", "{64C795DF-FE8B-4D4C-92F6-A418C3F10B19}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +35,22 @@ Global
 		{4683C5CE-6ECD-45EC-9D14-2BEE2446FBBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4683C5CE-6ECD-45EC-9D14-2BEE2446FBBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4683C5CE-6ECD-45EC-9D14-2BEE2446FBBE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{842961BA-7485-458C-A1FE-D7357D244624}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{842961BA-7485-458C-A1FE-D7357D244624}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{842961BA-7485-458C-A1FE-D7357D244624}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{842961BA-7485-458C-A1FE-D7357D244624}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D9F11DA-FCC6-494F-BE81-509F9CF3EAB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D9F11DA-FCC6-494F-BE81-509F9CF3EAB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D9F11DA-FCC6-494F-BE81-509F9CF3EAB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D9F11DA-FCC6-494F-BE81-509F9CF3EAB2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF8FB62B-2BC4-450C-8B56-81F60BF147E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF8FB62B-2BC4-450C-8B56-81F60BF147E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF8FB62B-2BC4-450C-8B56-81F60BF147E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF8FB62B-2BC4-450C-8B56-81F60BF147E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64C795DF-FE8B-4D4C-92F6-A418C3F10B19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64C795DF-FE8B-4D4C-92F6-A418C3F10B19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64C795DF-FE8B-4D4C-92F6-A418C3F10B19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64C795DF-FE8B-4D4C-92F6-A418C3F10B19}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
