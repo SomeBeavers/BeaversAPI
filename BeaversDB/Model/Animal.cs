@@ -21,6 +21,7 @@ public class Animal
     public         int?                JobId   { get; set; }
     public virtual Person?             LovedBy { get; set; }
     public virtual Person?             HatedBy { get; set; }
+    public byte[]? Image { get; set; }
 
     [BackingField(nameof(_food))]
     public virtual Food? Food
