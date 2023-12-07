@@ -57,8 +57,14 @@ public class BotClient(string token, BeaversService beaversService)
         }
         else
         {
-            var customText = $"You {user.Username} are {beavers.First().Name}";
-            await bot.SendTextMessageAsync(user.Id, customText);
+            // select random beaver from beavers
+            var random = new Random();
+            var randomBeaver = beavers.ElementAt(random.Next(beavers.Count()));
+            var randomBeaverText = $"Random beaver: {randomBeaver.Name}, Age: {randomBeaver.Age}, Fluffiness: {randomBeaver.Fluffiness}, Size: {randomBeaver.Size}";
+            await bot.SendTextMessageAsync(user.Id, randomBeaverText);
+            
+            //var customText = $"You {user.Username} are {beavers.First().Name}";
+            //await bot.SendTextMessageAsync(user.Id, customText);
         }
     }
 
