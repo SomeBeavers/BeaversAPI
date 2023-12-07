@@ -34,7 +34,7 @@ public class BotClient(string token, BeaversService beaversService)
                 throw new ArgumentOutOfRangeException();
         }
     }
-    
+
 
     private async Task HandleError(ITelegramBotClient _, Exception exception, CancellationToken cancellationToken)
     {
@@ -44,14 +44,14 @@ public class BotClient(string token, BeaversService beaversService)
     private async Task HandleMessage(Message message)
     {
         var user = message.From;
-        
+
         var text = message.Text ?? string.Empty;
         var beavers = await beaversService.GetBeaversAsync();
 
         if (user is null) return;
         Console.WriteLine($"{user.FirstName} wrote {text}");
 
-        if (text.StartsWith("/"))
+        if (text.StartsWith('/'))
         {
             await HandleCommand(user.Id, text);
         }
@@ -59,12 +59,11 @@ public class BotClient(string token, BeaversService beaversService)
         {
             // select random beaver from beavers
             var random = new Random();
-            var randomBeaver = beavers.ElementAt(random.Next(beavers.Count()));
-            var randomBeaverText = $"Random beaver: {randomBeaver.Name}, Age: {randomBeaver.Age}, Fluffiness: {randomBeaver.Fluffiness}, Size: {randomBeaver.Size}";
-            await bot.SendTextMessageAsync(user.Id, randomBeaverText);
+            var beaverModels = beavers.ToList();
+            var randomBeaver = beaverModels.ElementAt(random.Next(beaverModels.Count));
             
-            //var customText = $"You {user.Username} are {beavers.First().Name}";
-            //await bot.SendTextMessageAsync(user.Id, customText);
+            var randomBeaverText = $"{user.Username} is {randomBeaver.Fluffiness} {randomBeaver.Name}";
+            await bot.SendTextMessageAsync(user.Id, randomBeaverText);
         }
     }
 
