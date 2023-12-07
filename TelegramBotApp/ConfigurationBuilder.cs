@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 
+
 namespace TelegramBotApp;
 
 public class ConfigurationBuilder
@@ -9,6 +10,7 @@ public class ConfigurationBuilder
         var builder = new Microsoft.Extensions.Configuration.ConfigurationBuilder()
             .SetBasePath(Directory.GetCurrentDirectory())
             .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
+
         return builder.Build();
     }
 }

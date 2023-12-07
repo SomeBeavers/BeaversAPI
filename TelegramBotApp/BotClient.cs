@@ -4,72 +4,70 @@ using Telegram.Bot.Types.Enums;
 
 namespace TelegramBotApp;
 
-public class BotClient
+public class BotClient(string token, BeaversService beaversService)
 {
-    private readonly TelegramBotClient bot;
-    private readonly CancellationTokenSource cts;
-    public BotClient(string token)
-    {
-        bot = new TelegramBotClient(token);
-        cts = new CancellationTokenSource();
-    }
+    private readonly TelegramBotClient bot = new(token);
+    private readonly CancellationTokenSource cts = new();
+
     public void StartReceiving()
     {
         bot.StartReceiving(
-            updateHandler: HandleUpdate,
+            HandleUpdate,
             HandleError,
             cancellationToken: cts.Token
         );
     }
+
     public void StopReceiving()
     {
         cts.Cancel();
     }
-    async Task HandleUpdate(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
+
+    private async Task HandleUpdate(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
     {
         switch (update.Type)
         {
-            // A message was received
             case UpdateType.Message:
                 await HandleMessage(update.Message!);
                 break;
+            default:
+                throw new ArgumentOutOfRangeException();
         }
     }
+    
 
-    async Task HandleError(ITelegramBotClient _, Exception exception, CancellationToken cancellationToken)
+    private async Task HandleError(ITelegramBotClient _, Exception exception, CancellationToken cancellationToken)
     {
         await Console.Error.WriteLineAsync(exception.Message);
     }
 
-    async Task HandleMessage(Message message)
+    private async Task HandleMessage(Message message)
     {
         var user = message.From;
+        
         var text = message.Text ?? string.Empty;
+        var beavers = await beaversService.GetBeaversAsync();
 
-        if (user is null)
-        {
-            return;
-        }
+        if (user is null) return;
         Console.WriteLine($"{user.FirstName} wrote {text}");
 
-        // When we get a command, we react accordingly
         if (text.StartsWith("/"))
         {
             await HandleCommand(user.Id, text);
         }
         else
         {
-            var customText = $"You {user.Username} said {message.Text}";
+            var customText = $"You {user.Username} are {beavers.First().Name}";
             await bot.SendTextMessageAsync(user.Id, customText);
         }
     }
 
-    async Task HandleCommand(long userId, string command)
+    private async Task HandleCommand(long userId, string command)
     {
         switch (command)
         {
             case "/stop":
-                cts.Cancel();
+                await cts.CancelAsync();
                 break;
             case "/help":
                 await bot.SendTextMessageAsync(userId, "This is a help message.");
