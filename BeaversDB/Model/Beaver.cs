@@ -3,8 +3,11 @@
 //[Table("Beaver")]
 public class Beaver : Animal
 {
-    public FluffinessEnum Fluffiness { get; set; }
-    public int            Size       { get; set; }
+    public FluffinessEnum   Fluffiness  { get; set; }
+    public int              Size        { get; set; }
+    public List<AnimalClub> AnimalClubs { get; set; }
+    
+
 
     public override string ToString()
     {
