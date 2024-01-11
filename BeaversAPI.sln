@@ -18,6 +18,9 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TelegramBotApp", "TelegramBotApp\TelegramBotApp.csproj", "{64C795DF-FE8B-4D4C-92F6-A418C3F10B19}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DDE19303-53FA-4050-B8E5-7F227B03F41E}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
