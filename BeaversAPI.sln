@@ -9,13 +9,18 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BeaversDB", "BeaversDB\Beav
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BeaversSite", "BeaversSite\BeaversSite.csproj", "{4683C5CE-6ECD-45EC-9D14-2BEE2446FBBE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenAILib", "OpenAILib\OpenAILib.csproj", "{842961BA-7485-458C-A1FE-D7357D244624}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenAILib", "OpenAILib\OpenAILib.csproj", "{842961BA-7485-458C-A1FE-D7357D244624}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp", "ConsoleApp\ConsoleApp.csproj", "{7D9F11DA-FCC6-494F-BE81-509F9CF3EAB2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp", "ConsoleApp\ConsoleApp.csproj", "{7D9F11DA-FCC6-494F-BE81-509F9CF3EAB2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelegramBot", "TelegramBot\TelegramBot.csproj", "{EF8FB62B-2BC4-450C-8B56-81F60BF147E6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TelegramBot", "TelegramBot\TelegramBot.csproj", "{EF8FB62B-2BC4-450C-8B56-81F60BF147E6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelegramBotApp", "TelegramBotApp\TelegramBotApp.csproj", "{64C795DF-FE8B-4D4C-92F6-A418C3F10B19}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TelegramBotApp", "TelegramBotApp\TelegramBotApp.csproj", "{64C795DF-FE8B-4D4C-92F6-A418C3F10B19}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DDE19303-53FA-4050-B8E5-7F227B03F41E}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
