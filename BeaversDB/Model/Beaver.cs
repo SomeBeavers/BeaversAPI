@@ -10,7 +10,10 @@ public class Beaver : Animal
 
 	public override string ToString()
 	{
-	
+		var animalClubs = new List<AnimalClub>();
+		animalClubs.Add(new AnimalClub { AnimalId = this.Id, ClubId = 1, PublicationDate = DateTime.Now });
+		animalClubs.Add(new AnimalClub { AnimalId = this.Id, ClubId = 2, PublicationDate = DateTime.Now });
+		this.AnimalClubs = animalClubs;
 		return @$"{base.ToString()} Beaver: Fluffiness = {this.Fluffiness} Size = {this.Size}";
 	}
 
