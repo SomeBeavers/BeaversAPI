@@ -20,7 +20,9 @@ var token = configuration.GetSection("BotSettings:Token").Value;
 
 
 
+
 var botClient = new BotClient(token, beaversService);
+
 
 botClient.StartReceiving();
 

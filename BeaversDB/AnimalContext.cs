@@ -22,6 +22,9 @@ public class AnimalContext : DbContext
     public DbSet<Elf> Elves { get; set; } = null!;
     public DbSet<AdditionalInfo> AdditionalInfos { get; set; } = null!;
     public DbSet<AdditionalInfoDetailed> AdditionalInfoDetailed { get; set; } = null!;
+    public DbSet<Location> Locations { get; set; } = null!;
+    public DbSet<AnimalLocation> AnimalLocations { get; set; } = null!;
+    
 
     public DbSet<MapToQuery> MapToQuery { get; set; } = null!;
 
