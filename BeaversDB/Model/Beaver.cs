@@ -1,19 +1,28 @@
 ﻿namespace BeaversDB.Model;
 
 //[Table("Beaver")]
+
 public class Beaver : Animal
 {
 	public FluffinessEnum Fluffiness { get; set; }
 	public int Size { get; set; }
 	public List<AnimalClub> AnimalClubs { get; set; }
 
-
+	/// <summary>
+	/// Overrides the base ToString method to include additional information about the Beaver object.
+	/// </summary>
+	/// <returns>A string representation of the Beaver object.</returns>
 	public override string ToString()
 	{
-		var animalClubs = new List<AnimalClub>();
-		animalClubs.Add(new AnimalClub { AnimalId = this.Id, ClubId = 1, PublicationDate = DateTime.Now });
-		animalClubs.Add(new AnimalClub { AnimalId = this.Id, ClubId = 2, PublicationDate = DateTime.Now });
-		this.AnimalClubs = animalClubs;
+		List<AnimalClub> animalClubs =
+        [
+            new AnimalClub { AnimalId = Id, ClubId = 1, PublicationDate = DateTime.Now },
+            new AnimalClub { AnimalId = Id, ClubId = 2, PublicationDate = DateTime.Now },
+            
+            
+        ];
+
+        AnimalClubs = animalClubs;
 		return @$"{base.ToString()} Beaver: Fluffiness = {this.Fluffiness} Size = {this.Size}";
 	}
 
@@ -30,6 +39,7 @@ public class Beaver : Animal
 public enum FluffinessEnum
 {
 	NotFluffy,
-	Fluffy,
+    MediumFluffy,
+    Fluffy,
 	VeryFluffy
 }

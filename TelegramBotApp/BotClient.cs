@@ -1,4 +1,6 @@
-﻿using Telegram.Bot;
+﻿using System.Text.Json;
+using API.Models;
+using Telegram.Bot;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
 
@@ -53,15 +55,26 @@ public class BotClient(string token, BeaversService beaversService)
 
         if (text.StartsWith('/'))
         {
+            
             await HandleCommand(user.Id, text);
+            
+        }
+        else if (text.Length == 0)
+        {
+            await bot.SendTextMessageAsync(user.Id, "Please enter a valid command.");
+            // select random beaver from beavers
+            var randomBeaverIndex = random.Next(beavers.Count());
+            var randomBeaver = beavers.ElementAt(randomBeaverIndex);
+            await bot.SendTextMessageAsync(user.Id, $"Random beaver: {randomBeaver.Name}");
         }
         else
         {
-            // select random beaver from beavers
+           
+            
             var random = new Random();
             var beaverModels = beavers.ToList();
             var randomBeaver = beaverModels.ElementAt(random.Next(beaverModels.Count));
-            
+
             var randomBeaverText = $"{user.Username} is {randomBeaver.Fluffiness} {randomBeaver.Name}";
             await bot.SendTextMessageAsync(user.Id, randomBeaverText);
         }
