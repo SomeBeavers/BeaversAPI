@@ -61,22 +61,21 @@ public class BotClient(string token, BeaversService beaversService)
         }
         else if (text.Length == 0)
         {
-            await bot.SendTextMessageAsync(user.Id, "Please enter a valid command.");
-            // select random beaver from beavers
+            var random = new Random();
             var randomBeaverIndex = random.Next(beavers.Count());
             var randomBeaver = beavers.ElementAt(randomBeaverIndex);
             await bot.SendTextMessageAsync(user.Id, $"Random beaver: {randomBeaver.Name}");
+            if (randomBeaver == null)
+            {
+                // select random beaver from beavers
+                
+            }
         }
         else
         {
-           
-            
-            var random = new Random();
-            var beaverModels = beavers.ToList();
-            var randomBeaver = beaverModels.ElementAt(random.Next(beaverModels.Count));
+            // select random beaver from beavers
 
-            var randomBeaverText = $"{user.Username} is {randomBeaver.Fluffiness} {randomBeaver.Name}";
-            await bot.SendTextMessageAsync(user.Id, randomBeaverText);
+            
         }
     }
 
