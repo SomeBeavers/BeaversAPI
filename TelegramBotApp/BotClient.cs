@@ -67,7 +67,11 @@ public class BotClient(string token, BeaversService beaversService)
             // select another beaver if current beaver is null
             if (randomBeaver == null)
             {
+                await bot.SendTextMessageAsync(user.Id, "No beavers available.");
+                await bot.SendTextMessageAsync(user.Id, $"Selected beaver: {randomBeaver.Name}");
+                
                 randomBeaver = beavers.ElementAt(random.Next(beavers.Count()));
+
             }
 
         }
@@ -81,7 +85,9 @@ public class BotClient(string token, BeaversService beaversService)
             await bot.SendTextMessageAsync(user.Id, $"Matching beavers: {response}");
             
         }
+
     }
+
 
     private async Task HandleCommand(long userId, string command)
     {
@@ -93,6 +99,7 @@ public class BotClient(string token, BeaversService beaversService)
             case "/help":
                 await bot.SendTextMessageAsync(userId, "This is a help message.");
                 break;
+
         }
 
         await Task.CompletedTask;
